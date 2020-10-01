@@ -21,7 +21,9 @@ The dataset consists of data collected from heavy Scania trucks in everyday usag
 - EPOCHS = 
 - layers = Dense layers, (100, 100, 50, 50)
 
-## 4. How to run train & evaluation
+## 4. Model Assessment - model name 20201001_234728
+![alt text](https://github.com/heavencandle/kubig_competition_20202R/blob/master/graph.PNG)
+## 5. How to run train & evaluation
 1. run classficatin.py
    - What does classificatin.py do?
       1) Read csv files and process data : replace na's, reorganize histogram columns into aggrevated values(e.g. ag_001~ag_009 -> ag_max, ag_min, ag_actv_bins)  
@@ -30,7 +32,7 @@ The dataset consists of data collected from heavy Scania trucks in everyday usag
 2. run evaluation.py  
    - have to change *MODEL_NAME* into h5 file name you want to evaluate  
 
-## 5. Processing & Train details
+## 6. Processing & Train details
 1. Data processing  
   - NA replacement : replace na's depending on class(i.e. positive/negative)  
     > Why not replace with class-free mean values?  
