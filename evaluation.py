@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report,confusion_matrix
 from keras.backend.tensorflow_backend import set_session
 
 
-MODEL_NAME = "20201001_234325"
+MODEL_NAME = "20201001_234728"
 LEARNING_RATE = 0.0001
 
 #configuration
