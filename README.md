@@ -1,0 +1,1 @@
+# kubig_competition_20202R
