@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import datetime
+from sklearn.preprocessing import StandardScaler
 
 class InputData():
     def __init__(self, filename):
@@ -74,15 +75,29 @@ class InputData():
 
             original = original.drop(columns=full_bins)
 
+        #split feature and label
+        self.feature = original.iloc[:, 1:]
+        self.label =  original['class']
+
+        #Standardization
+        print("Standardizing data")
+        std_scaler = StandardScaler()
+        std_scaler.fit(self.feature)
+        original_std = std_scaler.transform(self.feature)
+        original_std = pd.DataFrame(original_std, columns=self.feature.columns, index=list(self.feature.index.values))
+        self.feature = original_std
+
         print("Processing finished, saving file")
         file_name = "Train_data_processed_"+datetime.datetime.now().strftime('%Y%m%d_%H%M%S')+".csv"
-        self.processed = original
         # self.processed.to_csv(file_name)
         print("Processed File Saved")
 
     def dataSplit(self, train_portion, val_portion, test_portion):
-        x = self.processed.iloc[:, 1:].to_numpy()
-        y = self.processed['class'].astype(int).to_numpy()
+        # x = self.processed.iloc[:, 1:].to_numpy()
+        # y = self.processed['class'].astype(int).to_numpy()
+
+        x = self.feature.to_numpy()
+        y = self.label.astype(int).to_numpy()
 
         shuffle_indices = np.random.permutation(np.arange(len(y)))  # [1,2,3,4...len] ->#[4509,11,1356,4...len]
         shuffled_x = x[shuffle_indices]  # input x를 shuffle 한 후 list를 numpy 자료형으로
