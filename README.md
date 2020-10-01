@@ -17,9 +17,9 @@ The dataset consists of data collected from heavy Scania trucks in everyday usag
 ## 3. MODEL Configuration
 - CLASS_WEIGHT = {0:0.015, 1:0.985}  
 - optimizer, LEARNING_RATE = Adam, 0.00001
-- BATCH SIZE = 100
-- EPOCHS = 
-- layers = Dense layers, (100, 100, 50, 50)
+- BATCH SIZE = 200
+- EPOCHS = 30
+- layers = Dense layers, (100, 100, 50, 50, 50)
 
 ## 4. Model Assessment - model name 20201001_234728
 ![alt text](https://github.com/heavencandle/kubig_competition_20202R/blob/master/graph.PNG)
