@@ -10,9 +10,8 @@ import matplotlib.pyplot as plt
 import datetime
 
 #model configuration setting
-MODEL_NAME = "20201001_181746"
 CLASS_WEIGHT = {0:0.015, 1:0.985}
-LEARNING_RATE = 0.00001
+LEARNING_RATE = 0.0001
 
 #gpu configuration
 config = tf.ConfigProto()
@@ -33,11 +32,11 @@ model.add(Dense(50,activation='relu'))
 model.add(Dense(2,activation='softmax'))
 model.compile(loss='categorical_crossentropy', 
               optimizer=Adam(LEARNING_RATE),
-              metrics=['accuracy', tf.keras.metrics.Recall(),tf.keras.metrics.Precision()])
+              metrics=['accuracy', tf.keras.metrics.Recall(name='recall'),tf.keras.metrics.Precision(name='precision')])
 model.summary()
 
 class_weight = CLASS_WEIGHT
-hist = model.fit(x_train, y_train, validation_data=(x_val, y_val), batch_size = 100, epochs=90, class_weight = class_weight)
+hist = model.fit(x_train, y_train, validation_data=(x_val, y_val), batch_size = 200, epochs=24, class_weight = class_weight)
 loss, accuracy , recall, precision = model.evaluate(x_val, y_val)
 print("Accuracy = {:.2f}".format(accuracy))
 

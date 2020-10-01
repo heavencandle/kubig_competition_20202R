@@ -1,19 +1,16 @@
 import data_processing as dp
 import tensorflow as tf
 from keras.models import Sequential
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from keras.layers import Dense
-from keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 import numpy as np
 from sklearn.metrics import classification_report,confusion_matrix
 from keras.backend.tensorflow_backend import set_session
-import matplotlib.pyplot as plt
-import datetime
-import classification as train
 
-MODEL_NAME = "20201001_185823.h5"
-CLASS_WEIGHT = train.CLASS_WEIGHT
-LEARNING_RATE = train.LEARNING_RATE
+
+MODEL_NAME = "20201001_221051"
+LEARNING_RATE = 0.0001
 
 #configuration
 config = tf.ConfigProto()
@@ -29,10 +26,9 @@ x_train, y_train, x_val, y_val, x_test, y_test = data.dataSplit(0.0, 0.0, 1.0)
 #get saved model
 model = load_model(MODEL_NAME+".h5")
 
-class_weight = CLASS_WEIGHT
 model.compile(loss='categorical_crossentropy',
               optimizer=Adam(LEARNING_RATE),
-              metrics=['accuracy'])
+              metrics=['accuracy', tf.keras.metrics.Recall(name='recall'),tf.keras.metrics.Precision(name='precision')])
 
 #predict test data
 y_pred = model.predict(x_test)
