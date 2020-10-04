@@ -36,7 +36,7 @@ The dataset consists of data collected from heavy Scania trucks in everyday usag
 1. Data processing  
   - NA replacement : replace na's depending on class(i.e. positive/negative)  
     > Why not replace with class-free mean values?  
-    > : There was relationship between NA values and 'neg' class, over 90% of NA values were marked as 'neg'. So, if just replace with class-free mean values, it looses its effect on 'neg' class.  
+    > : There was relationship between NA values and 'neg' class, P(neg|NA) was over 90% for most columns. So, if just replace with class-free mean values, it looses its effect on 'neg' class.  
   - Attributes reorganization  
     1) non-histogram columns: no reorganizing  
     2) histogram columns: aggregate rowwise values into max, min, number of activated bins.  
