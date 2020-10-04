@@ -44,7 +44,7 @@ The dataset consists of data collected from heavy Scania trucks in everyday usag
     > : most row wise value of histogram columns(e.g. ag_001 ~ ag_009) have similar shpae as a bell, which means abnormal data may have (1) an uncompletely drawn bell shape or (2) too high / low value.  
       
     > Why activated bins?  
-    > : Considering data details, each bins may mean time axis. For example, ag_001 ~ ag_009 may mean somewhat pressure change upon time. Upon this assumption, low activated bins value menas radical change(e.g. short zero to hundred) and high activated bins value means retarded change(e.g. not working in time).  
+    > : Considering data details, each bins may mean time axis. For example, ag_001 ~ ag_009 may mean somewhat pressure change upon time. Upon this assumption, low activated bins value menas radical change(e.g. short zero to sixty) and high activated bins value means retarded change(e.g. not working in time).  
 2. Training  
   - Difference in loss per classes(loss = FN * 500 + FT * 10, have to increase Recall) and imbalance between positive data an negative data. More neg data(about 99%) an than pos data.
     > apply class weight
